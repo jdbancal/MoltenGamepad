@@ -184,6 +184,8 @@ int print_usage(char* execname) {
                           "\n"
                           "--mimic-xpad\n"
                           "\tMake the virtual output devices appear as xpad-style XBox 360 devices\n"
+                          "--mimic-wheel\n"
+                          "\tMake the virtual output devices appear as steering wheel\n"
                           "--rumble -R\n"
                           "\tProcess controller rumble effects. (Do not quit while rumble effects are loaded.)\n"
                           "--daemon -d\n"
@@ -242,6 +244,7 @@ int parse_opts(options& options, int argc, char* argv[]) {
     {"print-cfg",     0,    0,    0},
     {"load-plugins",  0,    0,    0}, //still keep these entries even if compiled out, so that indices remain the same.
     {"load-root-plugins",0, 0,    0},
+    {"mimic-wheel",   0,    0,    0},
     {0,               0,    0,    0},
   };
   int long_index;
@@ -274,6 +277,10 @@ int parse_opts(options& options, int argc, char* argv[]) {
       if (long_index == 14) {
         options.set("mimic_xpad","true");
         options.lock("mimic_xpad", true);
+      };
+      if (long_index == 25) {
+        options.set("mimic_wheel","true");
+        options.lock("mimic_wheel", true);
       };
       if (long_index == 18) {
         options.set("stay_alive","true");

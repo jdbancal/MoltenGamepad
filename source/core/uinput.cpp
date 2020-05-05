@@ -121,7 +121,19 @@ int uinput::make_gamepad(const uinput_ids& ids, bool dpad_as_hat, bool analog_tr
   if (rumble) {
     ioctl(fd, UI_SET_EVBIT, EV_FF);
     ioctl(fd, UI_SET_FFBIT, FF_RUMBLE);
-    uidev.ff_effects_max = 1;
+    ioctl(fd, UI_SET_FFBIT, FF_PERIODIC);
+    ioctl(fd, UI_SET_FFBIT, FF_CONSTANT);
+    ioctl(fd, UI_SET_FFBIT, FF_SPRING);
+    ioctl(fd, UI_SET_FFBIT, FF_DAMPER);
+    ioctl(fd, UI_SET_FFBIT, FF_SQUARE);
+    ioctl(fd, UI_SET_FFBIT, FF_TRIANGLE);
+    ioctl(fd, UI_SET_FFBIT, FF_SINE);
+    ioctl(fd, UI_SET_FFBIT, FF_SAW_UP);
+    ioctl(fd, UI_SET_FFBIT, FF_SAW_DOWN);
+    ioctl(fd, UI_SET_FFBIT, FF_GAIN);
+    ioctl(fd, UI_SET_FFBIT, FF_AUTOCENTER);
+    ioctl(fd, UI_SET_EVBIT, EV_FF_STATUS);
+    uidev.ff_effects_max = 20;
   }
   ioctl(fd, UI_SET_PHYS, ids.phys.c_str());
 

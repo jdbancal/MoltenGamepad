@@ -110,6 +110,7 @@ MoltenGamepad will also listen on stdin for user commands, such as changing a ma
 Useful command options:
 
 * `--mimic-xpad` Make the virtual controllers appear to be wired Xbox 360 controllers, which most games (and Steam) expect.
+* `--mimic-wheel` Make the virtual controllers appear to be wired driving wheel, which can be useful for racing games.
 * `--rumble` if you want rumble and understand the risks
 * `--load-plugins` if you have any external plugins you wish to load.
 
