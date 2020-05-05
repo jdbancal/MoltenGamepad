@@ -48,7 +48,7 @@ bool thumb_stick::claim_event(int id, mg_ev event) {
 
 void thumb_stick::process_syn_report(virtual_device* out) {
   int64_t output[2];
-  float x = ((float) event_vals[0])/ABS_RANGE;
+/*  float x = ((float) event_vals[0])/ABS_RANGE;
   float y = ((float) event_vals[1])/ABS_RANGE;
   float radius =sqrt(x*x + y*y);
   if (radius > 1-outzone) radius = 1-outzone;
@@ -61,7 +61,9 @@ void thumb_stick::process_syn_report(virtual_device* out) {
     //todo: angle snap
     output[0] = ABS_RANGE*scaled_radius*cos(angle);
     output[1] = ABS_RANGE*scaled_radius*sin(angle);
-  }
+  }*/
+  output[0] = event_vals[0]; // We ignore the circular feature and dead zone for linear response of all axes
+  output[1] = event_vals[1];
   if (output[0] != cached_output[0] || output[1] != cached_output[1]) {
     cached_output[0] = output[0];
     cached_output[1] = output[1];
